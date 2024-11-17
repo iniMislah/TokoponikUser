@@ -201,7 +201,7 @@ function fetchProducts() {
                     return true;
                 });
 
-                
+
                 // Set list filtered
                 const listFiltered = document.querySelector('.list-filtered')
 
@@ -521,7 +521,7 @@ function renderProducts(page, products = []) {
                             <div class="product-img w-full h-full aspect-[3/4]">
                                 ${productImages}
                             </div>
-                            <div class="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
+                                <div class="list-action sm:block md:block lg:hidden grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5">
                                 <div
                                     class="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-full duration-300 bg-white hover:bg-black hover:text-white">
                                     <span class="max-lg:hidden">Quick View</span>

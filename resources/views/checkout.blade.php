@@ -17,13 +17,13 @@
                     </div>
                 </div>
             </div>
-            
+
 <div class="checkout-block md:py-20 py-10">
             <div class="container">
                 <div class="content-main flex max-lg:flex-col-reverse gap-y-10 justify-between">
                     <div class="left lg:w-1/2">
                         <div class="login bg-surface py-3 px-4 flex justify-between rounded-lg">
-                            <div class="left flex items-center"><span class="text-on-surface-variant1 pr-4">Already have an account? </span><span class="text-button text-on-surface hover-underline cursor-pointer hover:underline">Login</span></div>
+                            <div class="left flex items-center"><span class="text-on-surface-variant1 pr-4">Already have an account? </span><a href="/login" class="text-button text-on-surface hover-underline cursor-pointer hover:underline">Login</a></div>
                             <div class="right"><i class="ph ph-caret-down fs-20 cursor-pointer"></i></div>
                         </div>
                         <div class="form-login-block mt-3">
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                                 <div class="block-button mt-3">
-                                    <button class="button-main button-blue-hover">Login</button>
+                                    <a href="/login" class="button-main button-blue-hover">Login</a>
                                 </div>
                             </form>
                         </div>

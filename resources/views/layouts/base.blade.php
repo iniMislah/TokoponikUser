@@ -5,15 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tokoponik</title>
-    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./dist/output-scss.css" />
-    <link rel="stylesheet" href="./dist/output-tailwind.css" />
+    <link rel="shortcut icon" href="{{ url('assets/images/logo.png') }}" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ url('assets/css/swiper-bundle.min.css') }}" />
+    <link rel="stylesheet" href="{{ url('assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url('dist/output-scss.css') }}" />
+    <link rel="stylesheet" href="{{ url('dist/output-tailwind.css') }}" />
 </head>
 
 <body>
-
     <div id="header" class="relative w-full style-nine">
         <div class="header-menu style-eight relative bg-white w-full md:h-[74px] h-[56px]">
             <div class="container mx-auto h-full">
@@ -24,34 +23,56 @@
                     <a href="index.html" class="flex items-center">
                         <div class="heading4">Tokoponik</div>
                     </a>
-                   
+                    <div class="form-search w-2/3 pl-8 flex items-center h-[44px] max-lg:hidden">
+                        <div class="category-block relative h-full">
+                            <div
+                                class="category-btn bg-black relative flex items-center gap-6 py-2 px-4 h-full rounded-l w-fit cursor-pointer"
+                                onclick="toggleCategoryMenu()">
+                                <div class="text-button text-white whitespace-nowrap" id="selected-category">All Categories</div>
+                                <i class="ph ph-caret-down text-white"></i>
+                            </div>
+                            <div id="sub-menu-category"
+                                class="sub-menu-category hidden absolute top-[44px] left-0 right-0 px-4 py-3 h-max bg-white rounded-b-2xl">
+                                <div class="item block">
+                                    <a href="#" onclick="selectCategory('Seed')">Seed</a>
+                                </div>
+                                <div class="item block">
+                                    <a href="#" onclick="selectCategory('Tools')">Tools</a>
+                                </div>
+                                <div class="item block">
+                                    <a href="#" onclick="selectCategory('Vegetables')">Vegetables</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full flex items-center h-full">
+                            <input type="text" id="search-input" class="search-input h-full px-4 w-full border border-line"
+                                placeholder="What are you looking for today?" />
+                            <button class="search-button button-main bg-black h-full flex items-center px-7 rounded-none rounded-r"
+                                onclick="searchProducts()">Search</button>
+                        </div>
+                    </div>
                     <div class="right flex gap-12 z-[1]">
                         <div class="list-action flex items-center gap-4">
                             <div class="user-icon flex items-center justify-center cursor-pointer">
                                 <i class="ph-bold ph-user text-2xl"></i>
                                 <div class="login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white">
-                                    <a href="/login" 
-                                    class="button-main w-full text-center">Login</a>
+                                    <a href="/login" class="button-main w-full text-center">Login</a>
                                     <div class="text-secondary text-center mt-3 pb-4">
                                         Don’t have an account?
-                                        <a href="/register"
-                                         class="text-black pl-1 hover:underline">Register </a>
+                                        <a href="/register" class="text-black pl-1 hover:underline">Register </a>
                                     </div>
-                                    <a href="/myaccount"
-                                        class="button-main bg-white text-black border border-black w-full text-center">Dashboard</a>
+                                    <a href="/myaccount" class="button-main bg-white text-black border border-black w-full text-center">Dashboard</a>
                                     <div class="bottom mt-4 pt-4 border-t border-line"></div>
                                     <a href="#!" class="body1 hover:underline">Support</a>
                                 </div>
                             </div>
                             <div class="max-md:hidden wishlist-icon flex items-center relative cursor-pointer">
                                 <i class="ph-bold ph-heart text-2xl"></i>
-                                <span
-                                    class="quantity wishlist-quantity absolute -right-1.5 -top-1.5 text-xs text-white bg-black w-4 h-4 flex items-center justify-center rounded-full">0</span>
+                                <span class="quantity wishlist-quantity absolute -right-1.5 -top-1.5 text-xs text-white bg-black w-4 h-4 flex items-center justify-center rounded-full">0</span>
                             </div>
                             <div class="max-md:hidden cart-icon flex items-center relative cursor-pointer">
                                 <i class="ph-bold ph-handbag text-2xl"></i>
-                                <span
-                                    class="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-white bg-black w-4 h-4 flex items-center justify-center rounded-full">0</span>
+                                <span class="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-white bg-black w-4 h-4 flex items-center justify-center rounded-full">0</span>
                             </div>
                         </div>
                     </div>
@@ -59,11 +80,12 @@
             </div>
         </div>
 
+
         <div class="top-nav-menu relative bg-white border-t border-b border-line h-[44px] max-lg:hidden z-10">
             <div class="container h-full">
                 <div class="top-nav-menu-main flex items-center justify-between h-full">
                     <div class="left flex items-center h-full">
-                       
+
                         <div class="menu-main style-eight h-full pl-12 max-lg:hidden">
                             <ul class="flex items-center gap-8 h-full">
 
@@ -1252,7 +1274,7 @@
                     class="list-product pb-5 hide-product-sold grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-[30px] gap-4 mt-4">
                     <div class="product-item grid-type" data-item="14">
                         <div class="product-main cursor-pointer block">
-                            <div class="product-thumb bg-white relative overflow-hidden rounded-2xl">
+                            {{-- <div class="product-thumb bg-white relative overflow-hidden rounded-2xl">
                                 <div
                                     class="product-tag text-button-uppercase bg-green px-3 py-0.5 inline-block rounded-full absolute top-3 left-3 z-[1]">
                                     New</div>
@@ -1286,7 +1308,7 @@
                                         class="add-cart-btn w-full text-button-uppercase py-2 text-center rounded-full duration-500 bg-white hover:bg-black hover:text-white">
                                         Add To Cart</div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="product-infor mt-4 lg:mb-7">
                                 <div class="product-sold sm:pb-4 pb-2">
                                     <div class="progress bg-line h-1.5 w-full rounded-full overflow-hidden relative">
@@ -1602,6 +1624,7 @@
         </div>
     </div>
 
+
     <div class="modal-wishlist-block">
         <div class="modal-wishlist-main py-6">
             <div class="heading px-6 pb-3 flex items-center justify-between relative">
@@ -1719,16 +1742,7 @@
                         <i class="ph ph-x text-sm"></i>
                     </div>
                 </div>
-                <div class="time countdown-cart px-6">
-                    <div class="flex items-center gap-3 px-5 py-3 bg-green rounded-lg">
-                        <p class="text-3xl">🔥</p>
-                        <div class="caption1">
-                            Your cart will expire in <span class="text-red caption1 font-semibold"><span
-                                    class="minute">04</span>:<span class="second">59</span></span> minutes!<br />
-                            Please checkout now before your items sell out!
-                        </div>
-                    </div>
-                </div>
+
                 <div class="heading banner mt-3 px-6">
                     <div class="text">
                         Buy <span class="text-button"> $<span class="more-price">150</span>.00 </span>
@@ -2227,6 +2241,66 @@
     <script src="./assets/js/phosphor-icons.js"></script>
     <script src="./assets/js/swiper-bundle.min.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/header.js"></script>
+    <script>
+        let selectedCategory = 'All Categories';
+
+        // Toggle category menu visibility
+        function toggleCategoryMenu() {
+            const menu = document.getElementById('sub-menu-category');
+            menu.classList.toggle('hidden');
+        }
+
+        // Select a category and update the UI
+        function selectCategory(category) {
+            selectedCategory = category;
+            document.getElementById('selected-category').innerText = category;
+            toggleCategoryMenu();
+            fetchProductsByCategory(category);
+        }
+
+        // Handle product search
+        async function searchProducts() {
+            const query = document.getElementById('search-input').value;
+            const url = `/api/products?search=${encodeURIComponent(query)}&type=${encodeURIComponent(selectedCategory)}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    console.log(data);
+                    alert(`Success: ${data.message}`);
+                    // Implement navigation or display results
+                } else {
+                    alert('Failed to fetch products');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Fetch products by category
+        async function fetchProductsByCategory(category) {
+            if (category === 'All Categories') {
+                category = ''; // Fetch all products
+            }
+            const url = `/api/products?type=${encodeURIComponent(category)}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    console.log(data);
+                    alert(`Success: Products fetched for category ${category}`);
+                    // Implement navigation or display results
+                } else {
+                    alert('Failed to fetch products by category');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
 
     @yield('js')
 </body>

@@ -24,7 +24,7 @@
                         <div class="heading4">Register</div>
                         <form class="md:mt-7 mt-4">
                             <div class="email">
-                                <input class="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="username" type="email" placeholder="Username or email address *" required />
+                                <input class="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="username" type="text" placeholder="Username or email address *" required />
                             </div>
                             <div class="pass mt-5">
                                 <input class="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="password" type="password" placeholder="Password *" required />
@@ -59,5 +59,49 @@
                 </div>
             </div>
         </div>
+
+@endsection
+
+@section('js')
+<script>
+    document.querySelector(".button-main").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Define the data object with user registration information
+        var data = {
+            // Example data structure, replace with actual form data
+            name: document.querySelector("#name").value,
+            email: document.querySelector("#email").value,
+            password: document.querySelector("#password").value
+        };
+
+        $.ajax({
+            url: "/api/register", // Use a relative URL if the API is on the same domain
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Include CSRF token if needed
+            },
+            success: function(response) {
+                if (response.status === 201) {
+                    alert("User Registered Successfully");
+
+                    // Display the newly registered user data
+                    console.log("User Data:", response.data);
+
+                    // Redirect to the login page or perform another action
+                    window.location.href = "/login";
+                } else {
+                    alert("Failed to register user.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", error);
+                alert("Registration failed. Please try again.");
+            }
+        });
+    });
+</script>
 
 @endsection

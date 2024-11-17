@@ -9,6 +9,16 @@ Route::get('/homepage', function () {
 
 });
 
+
+Route::get('/homepage/{id}', function ($id) {
+
+
+    return view('productdetail',['id'=>$id]);
+
+
+
+});
+
 Route::get('/blog', function () {
     return view('blog');
 
@@ -21,7 +31,6 @@ Route::get('/product', function () {
 
 
 });
-
 Route::get('/login', function () {
     return view('login');
 
@@ -56,6 +65,18 @@ Route::get('/cart', function () {
 });
 Route::get('/wishlist', function () {
     return view('wishlist');
+
+
+
+});
+Route::get('/detailblog', function () {
+    return view('detailblog');
+
+
+
+});
+Route::get('/productdetail', function () {
+    return view('productdetail');
 
 
 

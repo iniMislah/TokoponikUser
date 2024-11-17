@@ -27,7 +27,7 @@
 
 <div class="blog grid md:py-20 py-10">
             <div class="container">
-                <div class="list-blog grid lg:grid-cols-3 sm:grid-cols-2 md:gap-[42px] gap-8" data-item="9">
+                <div class="list-blog grid lg:grid-cols-3 sm:grid-cols-2 md:gap-[42px] gap-8" data-item=" ">
                     <!-- Blog Items -->
                 </div>
                 <div class="list-pagination w-full flex items-center justify-center gap-4 md:mt-10 mt-6"></div>
@@ -39,5 +39,5 @@
 <script src="./assets/js/phosphor-icons.js"></script>
         <script src="./assets/js/swiper-bundle.min.js"></script>
         <script src="./assets/js/main.js"></script>
-        <script src="./assets/js/blog.js"></script>
+        <script src="./assets/js/blog.js"><script>
 @endsection
