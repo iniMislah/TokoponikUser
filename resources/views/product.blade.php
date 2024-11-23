@@ -17,11 +17,12 @@
     <script src="./assets/js/swiper-bundle.min.js"></script>
     {{-- <script src="./assets/js/shop.js"></script> --}}
     <script src="./assets/js/main.js"></script>
+
     <script>
         async function fetchProducts() {
             try {
                 var token = localStorage.getItem("token");
-                const response = await fetch('http://127.0.0.1:8000/api/products', {
+                const response = await fetch('https://restapi-tokoponik-aqfsagdnfph3cgd8.australiaeast-01.azurewebsites.net/api/products', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,

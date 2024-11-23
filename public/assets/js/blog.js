@@ -1,7 +1,5 @@
 
 
-
-
 // //Blog Js
 
 // // DOM Elements

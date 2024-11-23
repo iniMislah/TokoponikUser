@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${item.picture}" alt="${item.name}" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="product-name text-lg font-semibold mb-2">${item.name}</h3>
                     <div class="flex justify-between items-center">
-                        <div class="product-price">$${item.price}</div>
+                        <div class="product-price">Rp${item.price}</div>
                         <button onclick="removeFromWishlist('${item.id}')"
                                 class="text-red-500 hover:text-red-700">
                             Remove

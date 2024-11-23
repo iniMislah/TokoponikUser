@@ -21,6 +21,17 @@ Route::get('/homepage/{id}', function ($id) {
 
 Route::get('/blog', function () {
     return view('blog');
+});
+
+
+Route::get('/blog/{id}', function ($id) {
+    return view('detailblog',['id'=>$id]);
+});
+
+
+
+Route::get('/login', function () {
+    return view('login');
 
 
 
@@ -31,12 +42,14 @@ Route::get('/product', function () {
 
 
 });
-Route::get('/login', function () {
-    return view('login');
+
+Route::get('/product/{id}', function ($id) {
+    return view('productdetail',['id'=>$id]);
 
 
 
 });
+
 Route::get('/checkout', function () {
     return view('checkout');
 

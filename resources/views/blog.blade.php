@@ -39,5 +39,5 @@
 <script src="./assets/js/phosphor-icons.js"></script>
         <script src="./assets/js/swiper-bundle.min.js"></script>
         <script src="./assets/js/main.js"></script>
-        <script src="./assets/js/blog.js"><script>
+
 @endsection

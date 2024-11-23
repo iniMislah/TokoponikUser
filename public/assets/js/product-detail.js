@@ -93,7 +93,7 @@ if (productDetail) {
                     imgItem.classList.add('swiper-slide', 'popup-link')
                     imgItem.innerHTML = `
                         <img src=${item} alt='img' class='w-full aspect-[3/4] object-cover' />
-                        
+
                     `
                     const imgItemClone = imgItem.cloneNode(true) // Copy imgItem
                     const imgItemClone2 = imgItem.cloneNode(true) // Copy imgItem

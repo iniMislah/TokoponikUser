@@ -119,7 +119,7 @@ class Cart {
                     <div>
                         <div class="name text-button">${item.name}</div>
                         <div class="flex items-center gap-2 mt-2">
-                            <div class="product-price text-title">$${item.price.toFixed(2)}</div>
+                            <div class="product-price text-title">Rp${item.price.toFixed(2)}</div>
                             <div class="quantity-block flex items-center gap-4">
                                 <div class="quantity-edit h-[32px] flex items-center justify-between rounded-lg border border-line">
                                     <button class="decrease-quantity w-8 h-full flex items-center justify-center">-</button>
@@ -134,14 +134,14 @@ class Cart {
                     <div class="remove-btn cursor-pointer">
                         <i class="ph-bold ph-x text-lg"></i>
                     </div>
-                    <div class="subtotal text-title">$${item.subtotal.toFixed(2)}</div>
+                    <div class="subtotal text-title">Rp${item.subtotal.toFixed(2)}</div>
                 </div>
             </div>
         `).join('');
 
         // Update total
         if (this.totalCartElement) {
-            this.totalCartElement.textContent = `$${this.getTotal().toFixed(2)}`;
+            this.totalCartElement.textContent = `Rp${this.getTotal().toFixed(2)}`;
         }
 
         // Add event listeners for quantity controls

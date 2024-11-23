@@ -218,7 +218,9 @@ async function fetchBlogs() {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`, // Pastikan token benar
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+
             }
         });
 
@@ -242,12 +244,16 @@ function renderBlogs(blogs) {
         listBlog.innerHTML = `<p class="no-blogs-message">Tidak ada blog yang tersedia.</p>`;
         return;
     }
-
     blogs.forEach((blog) => {
         const blogItem = document.createElement("div");
         blogItem.classList.add("blog-item");
 
-        blogItem.innerHTML = `
+        // Membuat anchor link untuk setiap item blog
+        const blogLink = document.createElement("a");
+        blogLink.href = `/blog/${blog.id}`;  // Mengarahkan ke halaman detail blog menggunakan ID
+        blogLink.classList.add("blog-link");  // Menambahkan kelas untuk styling jika diperlukan
+
+        blogLink.innerHTML = `
             <div class="blog-thumb">
                 <img src="${blog.blog_pics && blog.blog_pics.length ? blog.blog_pics[0].url : 'default-image.jpg'}"
                      alt="${blog.title}" class="w-full h-auto rounded-lg">
@@ -259,8 +265,13 @@ function renderBlogs(blogs) {
             </div>
         `;
 
+        // Membungkus elemen blog dengan anchor link
+        blogItem.appendChild(blogLink);
+
+        // Menambahkan item blog ke listBlog
         listBlog.appendChild(blogItem);
     });
+
 }
 
 // Panggil fungsi fetchBlogs ketika halaman dimuat
@@ -272,5 +283,119 @@ document.addEventListener("DOMContentLoaded", fetchBlogs);
 
 
 
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const modalCart = document.querySelector(".modal-cart-block");
+    const modalCartMain = document.querySelector(".modal-cart-main");
+    const closeCartBtn = document.querySelector(".modal-cart-main .close-btn");
+    const cartList = document.querySelector("#list-cart");
+    const checkoutBtn = document.querySelector(".checkout-btn");
+
+    // Open and Close Modal Cart
+    const openModalCart = () => {
+        handleItemModalCart();
+        modalCartMain?.classList.add("open");
+    };
+
+    const closeModalCart = () => {
+        modalCartMain?.classList.remove("open");
+    };
+
+    // Handle Cart Item Display
+    const handleItemModalCart = () => {
+        const cart = localStorage.getItem("cart");
+        if (!cart || !cartList) return;
+
+        const cartItems = JSON.parse(cart);
+
+        // Clear the cart list before rendering
+        cartList.innerHTML = "";
+
+        if (cartItems.length === 0) {
+            cartList.innerHTML = "<p>No items in your cart.</p>";
+            return;
+        }
+
+        // Generate the cart items dynamically
+        cartItems.forEach(item => {
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+            cartItem.setAttribute("data-id", item.id);
+
+            cartItem.innerHTML = `
+                <div class="cart-item-info">
+                    <img src="${item.imageUrl}" alt="${item.name}" />
+                    <div class="cart-item-details">
+                        <p class="cart-item-name">${item.name}</p>
+                        <p class="cart-item-price">$${item.price}</p>
+                    </div>
+                </div>
+                <div class="cart-item-quantity">
+                    <button class="decrease-btn">-</button>
+                    <input type="number" class="quantity" value="${item.quantity}" min="1" />
+                    <button class="increase-btn">+</button>
+                </div>
+                <div class="cart-item-total">
+                    <p class="cart-item-total-price">$${(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+                <button class="remove-btn">Remove</button>
+            `;
+
+            // Add event listeners for quantity adjustments and removal
+            cartItem.querySelector(".increase-btn").addEventListener("click", () => updateQuantity(item.id, 1));
+            cartItem.querySelector(".decrease-btn").addEventListener("click", () => updateQuantity(item.id, -1));
+            cartItem.querySelector(".remove-btn").addEventListener("click", () => removeFromCart(item.id));
+
+            cartList.appendChild(cartItem);
+        });
+    };
+
+    // Update Cart Quantity
+    const updateQuantity = (id, change) => {
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        const item = cartItems.find(i => i.id === id);
+
+        if (!item) return;
+
+        item.quantity += change;
+
+        // Ensure quantity doesn't go below 1
+        if (item.quantity < 1) item.quantity = 1;
+
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        handleItemModalCart();  // Re-render the cart items with updated quantity
+    };
+
+    // Remove Item from Cart
+    const removeFromCart = (id) => {
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        cartItems = cartItems.filter(item => item.id !== id);
+
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        handleItemModalCart();  // Re-render the cart after removal
+    };
+
+    // Show Cart Modal on Click (Add to Cart Button example)
+    const openCartButton = document.querySelector(".open-cart-btn");
+    if (openCartButton) {
+        openCartButton.addEventListener("click", openModalCart);
+    }
+
+    // Close Cart Modal
+    if (closeCartBtn) closeCartBtn.addEventListener("click", closeModalCart);
+
+    // Trigger Checkout (example, can be customized)
+    if (checkoutBtn) checkoutBtn.addEventListener("click", function() {
+        window.location.href = "/checkout";  // Redirect to checkout page
+    });
+
+    // Initialize the cart display
+    handleItemModalCart();
+});
 
 

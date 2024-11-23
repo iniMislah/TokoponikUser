@@ -24,17 +24,8 @@
                     <div class="left md:w-1/3 w-full xl:pr-[3.125rem] lg:pr-[28px] md:pr-[16px]">
                         <div class="user-infor bg-surface md:px-8 px-5 md:py-10 py-6 md:rounded-[20px] rounded-xl">
                             <div class="heading flex flex-col items-center justify-center">
-                                <div class="avatar">
-                                    <img src="./assets/images/avatar/1.png" alt="avatar" class="md:w-[140px] w-[120px] md:h-[140px] h-[120px] rounded-full" />
-                                </div>
-                                <div class="name heading6 mt-4 text-center">Tony Nguyen</div>
-                                <div class="mail heading6 font-normal normal-case text-secondary text-center mt-1">hi.avitex@gmail.com</div>
+                                <div class="name heading6 mt-4 text-center" class="/auth/users/id/info" ></div>
                             </div>
-                            <div class="menu-tab list-category w-full max-w-none lg:mt-10 mt-6">
-                                <a href="#!" class="category-item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white active" data-item="dashboard">
-                                    <span class="ph ph-house-line text-xl"></span>
-                                    <strong class="heading6">Dashboard</strong>
-                                </a>
                                 <a href="#!" class="category-item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5" data-item="orders">
                                     <span class="ph ph-package text-xl"></span>
                                     <strong class="heading6">History Orders</strong>
@@ -43,43 +34,87 @@
                                     <span class="ph ph-tag text-xl"></span>
                                     <strong class="heading6">My Address</strong>
                                 </a>
-                                <a href="#!" class="category-item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5" data-item="setting">
+                                {{-- <a href="#!" class="category-item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5" data-item="setting">
                                     <span class="ph ph-gear-six text-xl"></span>
                                     <strong class="heading6">Setting</strong>
-                                </a>
-                                <a href="login.html" class="category-item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5">
+                                </a> --}}
+                                <a href="/login" class="category-item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5">
                                     <span class="ph ph-sign-out text-xl"></span>
                                     <strong class="heading6">Logout</strong>
                                 </a>
                             </div>
                         </div>
                     </div>
+                    <div class="text-content w-full p-7 border border-line rounded-xl" data-item="address">
+                        <form id="address-form">
+                            <button type="button" class="tab_btn flex items-center justify-between w-full pb-1.5 border-b border-line active" data-item="billing">
+                                <strong class="heading6">Billing Address</strong>
+                                <span class="ph ph-caret-down text-2xl ic_down duration-300"></span>
+                            </button>
+                            <div class="form_address active" data-item="billing">
+                                <div class="grid sm:grid-cols-2 gap-4 gap-y-5 mt-5">
+                                    <!-- First Name -->
+                                    <div class="first-name">
+                                        <label for="billingFirstName" class="caption1 capitalize">First Name <span class="text-red">*</span></label>
+                                        <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="billingFirstName" type="text" required />
+                                    </div>
+
+                                    <!-- Last Name -->
+                                    <div class="last-name">
+                                        <label for="billingLastName" class="caption1 capitalize">Last Name <span class="text-red">*</span></label>
+                                        <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="billingLastName" type="text" required />
+                                    </div>
+
+                                    <!-- Note -->
+                                    <div class="note">
+                                        <label for="billingNote" class="caption1 capitalize">Note (optional)</label>
+                                        <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="billingNote" type="text" />
+                                    </div>
+
+                                    <!-- Province -->
+                                    <div class="province">
+                                        <label for="billingProvince" class="caption1 capitalize">Province / Provinsi <span class="text-red">*</span></label>
+                                        <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="billingProvince" type="text" required />
+                                    </div>
+
+                                    <!-- Street Address -->
+                                    <div class="street">
+                                        <label for="billingStreet" class="caption1 capitalize">Street Address <span class="text-red">*</span></label>
+                                        <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="billingStreet" type="text" required />
+                                    </div>
+
+                                    <!-- City -->
+                                    <div class="city">
+                                        <label for="billingCity" class="caption1 capitalize">Town / Kota <span class="text-red">*</span></label>
+                                        <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="billingCity" type="text" required />
+                                    </div>
+
+                                    <!-- Subdistrict -->
+                                    <div class="subdistrict">
+                                        <label for="billingSubdistrict" class="caption1 capitalize">Subdistrict / Kecamatan <span class="text-red">*</span></label>
+                                        <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="billingSubdistrict" type="text" required />
+                                    </div>
+
+                                    <!-- Postcode -->
+                                    <div class="postcode">
+                                        <label for="billingZip" class="caption1 capitalize">Postcode <span class="text-red">*</span></label>
+                                        <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="billingZip" type="text" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary w-full mt-4">Add Address</button>
+                        </form>
+                    </div>
+
+
+
+                        </div>
                     <div class="right list-filter md:w-2/3 w-full pl-2.5">
                         <div class="filter-item text-content w-full active" data-item="dashboard">
                             <div class="overview grid sm:grid-cols-3 gap-5">
-                                <div class="overview-item flex items-center justify-between p-5 border border-line rounded-lg box-shadow-xs">
-                                    <div class="counter">
-                                        <span class="text-secondary">Awaiting Pickup</span>
-                                        <h5 class="heading5 mt-1">4</h5>
-                                    </div>
-                                    <span class="ph ph-hourglass-medium text-4xl"></span>
-                                </div>
-                                <div class="overview-item flex items-center justify-between p-5 border border-line rounded-lg box-shadow-xs">
-                                    <div class="counter">
-                                        <span class="text-secondary">Cancelled Orders</span>
-                                        <h5 class="heading5 mt-1">12</h5>
-                                    </div>
-                                    <span class="ph ph-receipt-x text-4xl"></span>
-                                </div>
-                                <div class="overview-item flex items-center justify-between p-5 border border-line rounded-lg box-shadow-xs">
-                                    <div class="counter">
-                                        <span class="text-secondary">Total Number of Orders</span>
-                                        <h5 class="heading5 mt-1">200</h5>
-                                    </div>
-                                    <span class="ph ph-package text-4xl"></span>
-                                </div>
                             </div>
-                            
                         </div>
                         <div class="filter-item tab_order text-content overflow-hidden w-full p-7 border border-line rounded-xl" data-item="orders">
                             <h6 class="heading6">Your Orders</h6>
@@ -140,131 +175,6 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                            <div class="text-title">
-                                                <span class="prd_quantity">2</span>
-                                                <span> X </span>
-                                                <span class="prd_price">$70.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-wrap gap-4 p-5">
-                                        <button class="button-main btn_order_detail">Order Details</button>
-                                        <button class="button-main bg-surface border border-line hover:bg-black text-black hover:text-white">Cancel Order</button>
-                                    </div>
-                                </div>
-                                <div class="order_item mt-5 border border-line rounded-lg box-shadow-xs">
-                                    <div class="flex flex-wrap items-center justify-between gap-4 p-5 border-b border-line">
-                                        <div class="flex items-center gap-2">
-                                            <strong class="text-title">Order Number:</strong>
-                                            <strong class="order_number text-button uppercase">s184989824</strong>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <strong class="text-title">Order status:</strong>
-                                            <span class="tag px-4 py-1.5 rounded-full bg-opacity-10 bg-yellow text-yellow caption1 font-semibold">Pending</span>
-                                        </div>
-                                    </div>
-                                    <div class="list_prd px-5">
-                                        <div class="prd_item flex flex-wrap items-center justify-between gap-3 py-5 border-b border-line">
-                                            <a href="product-default.html" class="flex items-center gap-5">
-                                                <div class="bg-img flex-shrink-0 md:w-[100px] w-20 aspect-square rounded-lg overflow-hidden">
-                                                    <img src="./assets/images/product/1000x1000.png" alt="Contrasting sheepskin sweatshirt" class="w-full h-full object-cover" />
-                                                </div>
-                                                <div>
-                                                    <div class="prd_name text-title">Contrasting sheepskin sweatshirt</div>
-                                                    <div class="caption1 text-secondary mt-2">
-                                                        <span class="prd_size uppercase">L</span>
-                                                        <span>/</span>
-                                                        <span class="prd_color capitalize">Pink</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <div class="text-title">
-                                                <span class="prd_quantity">1</span>
-                                                <span> X </span>
-                                                <span class="prd_price">$69.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-wrap gap-4 p-5">
-                                        <button class="button-main btn_order_detail">Order Details</button>
-                                        <button class="button-main bg-surface border border-line hover:bg-black text-black hover:text-white">Cancel Order</button>
-                                    </div>
-                                </div>
-                                <div class="order_item mt-5 border border-line rounded-lg box-shadow-xs">
-                                    <div class="flex flex-wrap items-center justify-between gap-4 p-5 border-b border-line">
-                                        <div class="flex items-center gap-2">
-                                            <strong class="text-title">Order Number:</strong>
-                                            <strong class="order_number text-button uppercase">s184989824</strong>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <strong class="text-title">Order status:</strong>
-                                            <span class="tag px-4 py-1.5 rounded-full bg-opacity-10 bg-success text-success caption1 font-semibold">Completed</span>
-                                        </div>
-                                    </div>
-                                    <div class="list_prd px-5">
-                                        <div class="prd_item flex flex-wrap items-center justify-between gap-3 py-5 border-b border-line">
-                                            <a href="product-default.html" class="flex items-center gap-5">
-                                                <div class="bg-img flex-shrink-0 md:w-[100px] w-20 aspect-square rounded-lg overflow-hidden">
-                                                    <img src="./assets/images/product/1000x1000.png" alt="Contrasting sheepskin sweatshirt" class="w-full h-full object-cover" />
-                                                </div>
-                                                <div>
-                                                    <div class="prd_name text-title">Contrasting sheepskin sweatshirt</div>
-                                                    <div class="caption1 text-secondary mt-2">
-                                                        <span class="prd_size uppercase">L</span>
-                                                        <span>/</span>
-                                                        <span class="prd_color capitalize">White</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <div class="text-title">
-                                                <span class="prd_quantity">1</span>
-                                                <span> X </span>
-                                                <span class="prd_price">$32.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-wrap gap-4 p-5">
-                                        <button class="button-main btn_order_detail">Order Details</button>
-                                        <button class="button-main bg-surface border border-line hover:bg-black text-black hover:text-white">Cancel Order</button>
-                                    </div>
-                                </div>
-                                <div class="order_item mt-5 border border-line rounded-lg box-shadow-xs">
-                                    <div class="flex flex-wrap items-center justify-between gap-4 p-5 border-b border-line">
-                                        <div class="flex items-center gap-2">
-                                            <strong class="text-title">Order Number:</strong>
-                                            <strong class="order_number text-button uppercase">s184989824</strong>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <strong class="text-title">Order status:</strong>
-                                            <span class="tag px-4 py-1.5 rounded-full bg-opacity-10 bg-red text-red caption1 font-semibold">Canceled</span>
-                                        </div>
-                                    </div>
-                                    <div class="list_prd px-5">
-                                        <div class="prd_item flex flex-wrap items-center justify-between gap-3 py-5 border-b border-line">
-                                            <a href="product-default.html" class="flex items-center gap-5">
-                                                <div class="bg-img flex-shrink-0 md:w-[100px] w-20 aspect-square rounded-lg overflow-hidden">
-                                                    <img src="./assets/images/product/1000x1000.png" alt="Contrasting sheepskin sweatshirt" class="w-full h-full object-cover" />
-                                                </div>
-                                                <div>
-                                                    <div class="prd_name text-title">Contrasting sheepskin sweatshirt</div>
-                                                    <div class="caption1 text-secondary mt-2">
-                                                        <span class="prd_size uppercase">M</span>
-                                                        <span>/</span>
-                                                        <span class="prd_color capitalize">Black</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <div class="text-title">
-                                                <span class="prd_quantity">1</span>
-                                                <span> X </span>
-                                                <span class="prd_price">$49.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-wrap gap-4 p-5">
-                                        <button class="button-main btn_order_detail">Order Details</button>
-                                        <button class="button-main bg-surface border border-line hover:bg-black text-black hover:text-white">Cancel Order</button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -315,54 +225,6 @@
                                         <div class="email">
                                             <label for="billingEmail" class="caption1 capitalize">Email <span class="text-red">*</span></label>
                                             <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="billingEmail" type="email" required />
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="tab_btn flex items-center justify-between w-full mt-10 pb-1.5 border-b border-line" data-item="shipping">
-                                    <strong class="heading6">Shipping address</strong>
-                                    <span class="ph ph-caret-down text-2xl ic_down duration-300"></span>
-                                </button>
-                                <div class="form_address" data-item="shipping">
-                                    <div class="grid sm:grid-cols-2 gap-4 gap-y-5 mt-5">
-                                        <div class="first-name">
-                                            <label for="shippingFirstName" class="caption1 capitalize">First Name <span class="text-red">*</span></label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingFirstName" type="text" required />
-                                        </div>
-                                        <div class="last-name">
-                                            <label for="shippingLastName" class="caption1 capitalize">Last Name <span class="text-red">*</span></label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingLastName" type="text" required />
-                                        </div>
-                                        <div class="company">
-                                            <label for="shippingCompany" class="caption1 capitalize">Company name (optional)</label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingCompany" type="text" required />
-                                        </div>
-                                        <div class="country">
-                                            <label for="shippingCountry" class="caption1 capitalize">Country / Region <span class="text-red">*</span></label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingCountry" type="text" required />
-                                        </div>
-                                        <div class="street">
-                                            <label for="shippingStreet" class="caption1 capitalize">street address <span class="text-red">*</span></label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingStreet" type="text" required />
-                                        </div>
-                                        <div class="city">
-                                            <label for="shippingCity" class="caption1 capitalize">Town / city <span class="text-red">*</span></label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingCity" type="text" required />
-                                        </div>
-                                        <div class="state">
-                                            <label for="shippingState" class="caption1 capitalize">state <span class="text-red">*</span></label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingState" type="text" required />
-                                        </div>
-                                        <div class="zip">
-                                            <label for="shippingZip" class="caption1 capitalize">ZIP <span class="text-red">*</span></label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingZip" type="text" required />
-                                        </div>
-                                        <div class="phone">
-                                            <label for="shippingPhone" class="caption1 capitalize">Phone <span class="text-red">*</span></label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingPhone" type="text" required />
-                                        </div>
-                                        <div class="email">
-                                            <label for="shippingEmail" class="caption1 capitalize">Email <span class="text-red">*</span></label>
-                                            <input class="border-line mt-2 px-4 py-3 w-full rounded-lg" id="shippingEmail" type="email" required />
                                         </div>
                                     </div>
                                 </div>
@@ -453,4 +315,5 @@
 <script src="./assets/js/phosphor-icons.js"></script>
         <script src="./assets/js/swiper-bundle.min.js"></script>
         <script src="./assets/js/main.js"></script>
+        <script src="{{ url('assets/js/myaccount.js') }}"></script>
 @endsection
